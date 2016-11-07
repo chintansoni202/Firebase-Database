@@ -1,0 +1,50 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.0"
+    defaultConfig {
+        applicationId "com.chintansoni.android.firebasedatabase"
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables{
+            useSupportLibrary true
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+def SUPPORT_LIBRARY_VERSION = "25.0.0"
+def PLAY_SERVICE_LIBRARY_VERSION = "9.8.0"
+def BUTTER_KNIFE_LIBRARY_VERSION = "8.4.0"
+def GLIDE_LIBRARY_VERSION = "3.7.0"
+def FIREBASE_UI_LIBRARY_VERSION = "0.4.2"
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:support-v4:$SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
+    compile "com.google.android.gms:play-services-auth:$PLAY_SERVICE_LIBRARY_VERSION"
+    // Firebase Auth Library
+    compile "com.google.firebase:firebase-auth:$PLAY_SERVICE_LIBRARY_VERSION"
+    // Firebase Database Library
+    compile "com.google.firebase:firebase-database:$PLAY_SERVICE_LIBRARY_VERSION"
+    // FirebaseUI Database only
+    compile "com.firebaseui:firebase-ui-database:$FIREBASE_UI_LIBRARY_VERSION"
+    // ButterKnife: View Injection Library
+    compile "com.jakewharton:butterknife:$BUTTER_KNIFE_LIBRARY_VERSION"
+    apt "com.jakewharton:butterknife-compiler:$BUTTER_KNIFE_LIBRARY_VERSION"
+    // Glide: Image Loading Library
+    compile "com.github.bumptech.glide:glide:$GLIDE_LIBRARY_VERSION"
+}
+
+apply plugin: 'com.google.gms.google-services'
